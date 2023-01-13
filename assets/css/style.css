@@ -448,6 +448,9 @@ section {
   display: block;
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -456,7 +459,9 @@ section {
   height: 100vh;
   background: url(../img/hero-bg.png) top center no-repeat;
   background-size: cover;
+  
 }
+
 
 .hero h1 {
   margin: 0;
@@ -651,7 +656,7 @@ section {
 # Values
 --------------------------------------------------------------*/
 
-
+/*
 .values .container{
   width: 100%;
   height: 100 vh;
@@ -659,38 +664,137 @@ section {
   box-shadow: 0px 0 5px rgba(1, 41, 112, 0.08);
   text-align: center;
   transition: 0.3s;
+}
+*/
+
+.values .container {
+  display : flex;
+  
+  align-items: center;
+  justify-content: center;
+  min-height: 100 vh;
   
   
 }
 
-.values .box img {
- 
-  padding: 30px 50px;
+
+.values .card {
+  
+  position: relative;
+  width:350px;
+  height: 450px;
+  margin: 20px;
+  
+}
+
+.values .card .face{
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
   transition: 0.5s;
-  transform: scale(1.1);
+}
+
+.values .card .front{
+  transform: perspective(600px) rotate(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+
+.values .card .front img {
+ 
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
   
 }
 
-.values .box h2 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #012970;
-}
-
-.values .box h3 {
-  font-size: 18px;
+.values .card .titulo{
+  position: absolute;
+ 
+  top: 0px;
+  width: 100%;
+  height: 35px;
+  font-size: 15px;
+  line-height: 45px;
   color: #000000;
   font-weight: 700;
-  margin-bottom: 18px;
+  text-align: center;
 }
 
-.values .box:hover {
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+
+.values .card .front h3{
+  position: absolute;
+  padding: 2px;
+  bottom: 0px;
+  width: 100%;
+  height: 55px;
+  font-size: 15px;
+  line-height: 15px;
+  color: #000000;
+  text-align: center;
 }
 
-.values .box:hover img {
-  transform: scale(1);
+
+.values .card .back{
+  transform: perspective(600px) rotateY(180deg);
+  background: rgba(3,35,54);
+  padding: 10px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 5px 10px #000;
 }
+
+
+
+
+
+.values .card .face .linkeo {
+  border-top: solid 1px #f3f3f3;
+  height: 50px;
+  line-height: 50px;
+  
+}
+
+.values .card .back .linkeo a {
+  color: #f3f3f3;
+}
+
+
+.values .card .back h3 {
+  font-size: 15px;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.values .card .back p {
+  
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-align: justify;
+
+}
+ 
+.card:hover .front{
+  transform: perspective(600px) rotateY(180deg);
+} 
+
+.card:hover .back{
+  transform: perspective(600px) rotateY(360deg);
+} 
+
+
+
+
+
+
 
 /*--------------------------------------------------------------
 # Services
@@ -1031,11 +1135,14 @@ section {
   margin: 0;
   padding-top: 0;
   
+  
 }
 .recent-blog-posts_body--show {
-  pointer-events: unset;
+ pointer-events: unset;
   opacity: 1;
   transition: opacity 1.5s ease-in-out;
+
+ 
 }
 
 .recent-blog-posts_picture{
@@ -1050,10 +1157,10 @@ height: 100 vh;
 
 .recent-blog-posts_img {
   
-  width: 500px;
+  width: 100%;
   height: 350px;
   object-fit: contain;
-  border-radius: 10%;
+  border-radius: 5%;
   object-position:center ;
 }
 
@@ -1069,6 +1176,13 @@ height: 100 vh;
   text-align: center;
 }
 
+.readmore {
+  display: flex;
+  justify-content: center;
+  
+
+}
+
 
 .recent-blog-posts span{
   color:  #012970;
@@ -1078,13 +1192,24 @@ height: 100 vh;
 }
 
 .recent-blog-posts_arrow {
-  width: 98%;
+    width: 98%;
   cursor: pointer;
 }
+
+
 .recent-blog-posts_review{
   text-align: justify;
 }
 
+
+.recent-blog-posts .recent-blog-posts_body:hover .subtitle {
+  color: #4154f1;
+}
+
+
+.recent-blog-posts .recent-blog-posts_body:hover .recent-blog-posts_picture .recent-blog-posts_img img {
+  transform: rotate(6deg) scale(1.2);
+}
 
 
 
@@ -1940,13 +2065,11 @@ height: 100 vh;
 
 
 /*--------------------------------------------------------------
-# Carousel
+# Carousel 
 --------------------------------------------------------------*/
-.carousel {
-  min-height: 500px;
 
-}
 
+/* estilos previos de version 1 del carrusel
 .carousel .carousel-item{
   padding: 2px;
   display: flex;
@@ -1956,9 +2079,9 @@ height: 100 vh;
   justify-content: center;
   width: 500px;
   height: 500px;
-  
 
 }
+
 
 .carousel .imagen{
  
@@ -2024,6 +2147,7 @@ height: 100 vh;
     font-size: 20px;
     color: #000000;
   }
+  */
 
   
 /*
